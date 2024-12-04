@@ -27,6 +27,10 @@
 ### 예외
 
 ## 사고 흐름
+- 메뉴 생성하기 : Menu, Menus
+- 주문하기 : Order, Orders
+- 이벤트 적용하기 : Event, Events
+- 계산하기 : Payment
 
 ## 패키지별 기능
 - controller
