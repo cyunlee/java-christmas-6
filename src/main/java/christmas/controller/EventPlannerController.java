@@ -15,12 +15,6 @@ public class EventPlannerController {
     private final OutputView outputView = new OutputView();
 
     public void run() {
-        start();
-
-
-    }
-
-    private void start() {
         outputView.printWelcomePrompt();
         int day = requireDay();
         Orders orders = placeAnOrder(requireOrder());

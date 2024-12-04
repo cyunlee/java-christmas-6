@@ -77,6 +77,9 @@ public class OutputView {
         if (givingDiscount != 0) {
             System.out.println("증정 이벤트: " + String.format("-%,d원", givingDiscount));
         }
+        if (christmasDiscount == 0 && weekdayDiscount == 0 && weekendDiscount == 0 && specialDiscount == 0 && givingDiscount == 0) {
+            System.out.println("없음");
+        }
     }
 
     private void printTotalDiscount(List<Integer> discounts) {
