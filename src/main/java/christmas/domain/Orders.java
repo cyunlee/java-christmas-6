@@ -12,6 +12,14 @@ public class Orders implements Iterable<Order> {
         return Orders;
     }
 
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Order order : Orders) {
+            totalPrice += order.calculatePrice();
+        }
+        return totalPrice;
+    }
+
     @Override
     public Iterator<Order> iterator() {
         return Orders.iterator();

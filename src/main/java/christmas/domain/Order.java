@@ -9,4 +9,9 @@ public class Order {
         this.quantity = quantity;
     }
 
+    public int calculatePrice() {
+        Menu menu = Menu.findMenu(name);
+        return quantity * menu.getPrice();
+    }
+
 }
