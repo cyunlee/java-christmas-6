@@ -27,6 +27,7 @@ public enum Menu {
     Menu(String name, int price) {
         this.name = name;
         this.price = price;
+        setType(name);
     }
 
     private void setType(String name) {
