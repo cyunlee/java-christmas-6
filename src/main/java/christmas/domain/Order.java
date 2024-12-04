@@ -9,5 +9,12 @@ public class Order {
     public Order(String name, int quantity) {
         this.name = name;
         this.quantity = quantity;
+        Menu menu = Menu.findMenu(name);
+        this.type = menu.getType();
+        this.price = menu.getPrice();
+    }
+
+    public int getTotalPriceBeforeDiscount() {
+        return quantity * price;
     }
 }

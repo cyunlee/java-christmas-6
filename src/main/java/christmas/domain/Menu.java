@@ -50,6 +50,10 @@ public enum Menu {
         }
     }
 
+    public static Menu findMenu(String name) {
+        return Arrays.stream(values()).filter(value -> value.name.equals(name)).findAny().orElse(null);
+    }
+
     public String getName() {
         return name;
     }
