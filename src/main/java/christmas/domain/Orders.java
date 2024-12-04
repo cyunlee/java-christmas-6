@@ -20,6 +20,26 @@ public class Orders implements Iterable<Order> {
         return totalPrice;
     }
 
+    public int getNumberOfMainMenu() {
+        int totalAmount = 0;
+        for (Order order : Orders) {
+            if (order.isOrderMain()) {
+                totalAmount += order.getQuantity();
+            }
+        }
+        return totalAmount;
+    }
+
+    public int getNumberOfDessertMenu() {
+        int totalAmount=0;
+        for (Order order : Orders) {
+            if (order.isOrderDessert()) {
+                totalAmount += order.getQuantity();
+            }
+        }
+        return totalAmount;
+    }
+
     @Override
     public Iterator<Order> iterator() {
         return Orders.iterator();

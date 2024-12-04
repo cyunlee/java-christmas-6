@@ -1,22 +1,23 @@
 package christmas.domain;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
-public class Event {
+public class EventPlanner {
     private final LocalDate startDate = LocalDate.of(2023,12,1);
     private final LocalDate christmasDate = LocalDate.of(2023,12,25);
     private final LocalDate endDate = LocalDate.of(2023,12,31);
     private final List<Integer> specialDate = Arrays.asList(3, 10, 17, 24, 25, 31);
    private LocalDate reservedDate;
    private int day;
+   private int totalPrice;
    private int dayValue;
 
-   public Event(int day) {
+   public EventPlanner(int day, int totalPrice) {
        getReservedDate(day);
        getDayOfWeek(reservedDate);
+       this.totalPrice = totalPrice;
        this.day = day;
    }
 
@@ -42,36 +43,39 @@ public class Event {
         return false;
     }
 
-    public int discountedByChristmasEvent(int totalPrice) {
-        int discountAmount = 1000 + 100 * (day - 1);
-        return totalPrice - discountAmount;
+    public int discountedByChristmasEvent() {
+        return 1000 + 100 * (day - 1);
     }
 
-    public int discountedByWeekdayEvent(int totalPrice, int numberOfWeekdayMenu) {
+    public int discountedByWeekdayEvent(int numberOfDessertMenu) {
         if (dayValue==7 || dayValue == 1 || dayValue == 2 || dayValue == 3 || dayValue == 4) {
-            return totalPrice - numberOfWeekdayMenu * 2023;
+            return numberOfDessertMenu * 2023;
         }
-        return totalPrice;
+        return 0;
     }
 
-    public int discountedByWeekendEvent(int totalPrice, int numberOfMainMenu) {
+    public int discountedByWeekendEvent(int numberOfMainMenu) {
         if (dayValue==5 || dayValue==6) {
-            return totalPrice - numberOfMainMenu * 2023;
+            return numberOfMainMenu * 2023;
         }
-        return totalPrice;
+        return 0;
     }
 
-    public int discountedBySpecialEvent(int totalPrice) {
+    public int discountedBySpecialEvent() {
         if (specialDate.contains(day)) {
-            return totalPrice - 1000;
+            return 1000;
         }
-        return totalPrice;
+        return 0;
     }
 
-    public boolean isGivingEventOK(int totalPrice) {
+    public int discountedByGivingEvent() {
         if (totalPrice >= 120000) {
-            return true;
+            return 25000;
         }
-        return false;
+        return 0;
+    }
+
+    public int calculateTotalEventDiscount(int numberOfDessertMenu, int numberOfMainMenu) {
+       return discountedByChristmasEvent() + discountedByWeekdayEvent(numberOfDessertMenu) + discountedByWeekendEvent(numberOfMainMenu) + discountedBySpecialEvent() + discountedByGivingEvent();
     }
 }
