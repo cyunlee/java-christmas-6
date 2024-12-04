@@ -19,7 +19,7 @@ public class OutputView {
         System.out.printf("%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!%n", month, date);
     }
 
-    public void printError(String message) {
+    public static void printError(String message) {
         System.out.println(ERROR + message);
     }
 }
