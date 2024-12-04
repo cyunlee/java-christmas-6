@@ -8,6 +8,14 @@ public class InputView {
     private final InputParser inputParser = new InputParser();
     private final InputValidator inputValidator = new InputValidator();
 
+    public int requireDay() {
+        String input = Console.readLine();
+    }
+
+    public String requireOrder() {
+        String input = Console.readLine();
+    }
+
     public String readInput() {
         try{
             String input = Console.readLine();

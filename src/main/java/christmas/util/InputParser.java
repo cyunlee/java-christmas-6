@@ -1,8 +1,23 @@
 package christmas.util;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class InputParser {
-
-    public String parseInput(String input) {
-
+    public int parseDay(String input) {
+        return Integer.parseInt(input);
     }
+
+    public Map<String, Integer> parseOrders(String input) {
+        Map<String, Integer> newOrders = new HashMap<>();
+        String[] orders = input.split(",");
+        for (String order : orders) {
+            List<String> newOrder = Arrays.asList(order.split("-"));
+            newOrders.put(newOrder.get(0), Integer.parseInt(newOrder.get(1)));
+        }
+        return newOrders;
+    }
+
 }
